@@ -96,11 +96,14 @@ public final class GCYMMetaTileEntities {
                     gcymId(String.format("parallel_hatch.%s", GTValues.VN[tier])), tier));
         }
         for (int i = 0; i < TIERED_HATCH.length; i++) {
-            if (!GregTechAPI.isHighTier() && i > GTValues.UHV)
-                break;
-
-            TIERED_HATCH[i] = registerMetaTileEntity(2054 + i,
-                    new MetaTileEntityTieredHatch(gcymId(String.format("tiered_hatch.%s", GTValues.VN[i])), i));
+            if (i <= GTValues.UHV || i == GTValues.MAX)
+                TIERED_HATCH[i] = registerMetaTileEntity(2054 + i,
+                        new MetaTileEntityTieredHatch(gcymId(String.format("tiered_hatch.%s", GTValues.VN[i])), i));
+            if (GTValues.UHV < i && i < GTValues.MAX)
+                if (GregTechAPI.isHighTier()) {
+                    TIERED_HATCH[i] = registerMetaTileEntity(2054 + i,
+                            new MetaTileEntityTieredHatch(gcymId(String.format("tiered_hatch.%s", GTValues.VN[i])), i));
+            }
         }
     }
 }
