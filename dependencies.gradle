@@ -38,7 +38,14 @@
  * For more details, see https://docs.gradle.org/8.4/userguide/java_library_plugin.html#sec:java_library_configurations_graph
  */
 dependencies {
+
+    api("codechicken:codechickenlib:3.2.3.358")
+    api("com.cleanroommc:modularui:2.4.3") { transitive = false }
+    api("com.cleanroommc:groovyscript:1.1.1") { transitive = false }
+    api("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.700")
+    api rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
+
+
     //api("gregtech:gregtech:2.8.9-beta")
     api(rfg.deobf(project.files("libs/gregtech-1.12.2-2.8.11-beta-dev.jar"))) // CEu pr nuclear-testing
-    api("com.cleanroommc:modularui:2.4.3") { transitive = false } // MUI 2.4.3
 }
