@@ -217,7 +217,7 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
             }
         }
 
-        @Override
+        /*@Override
         protected boolean setupAndConsumeRecipeInputs(@NotNull Recipe recipe,
                                                       @NotNull IItemHandlerModifiable importInventory,
                                                       @NotNull IMultipleTankHandler importFluids) {
@@ -256,6 +256,17 @@ public class MetaTileEntityLargeDistillery extends GCYMRecipeMapMultiblockContro
                 return true;
             }
             return false;
+        }*/
+
+        @Override
+        protected boolean checkOutputSpaceFluids(@NotNull Recipe recipe, @NotNull IMultipleTankHandler exportFluids) {
+            // Perform layerwise fluid checks
+            if (!metaTileEntity.canVoidRecipeFluidOutputs() &&
+                    !handler.applyFluidToOutputs(recipe.getAllFluidOutputs(), false)) {
+                this.isOutputsFull = true;
+                return false;
+            }
+            return true;
         }
 
         @Override
