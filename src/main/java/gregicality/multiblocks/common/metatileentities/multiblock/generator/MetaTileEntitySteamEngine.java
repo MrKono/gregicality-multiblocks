@@ -100,7 +100,7 @@ public class MetaTileEntitySteamEngine extends FuelMultiblockController {
     }
 
     @Override
-    public void runMufflerEffect(float xPos, float yPos, float zPos, float xSpd, float ySpd, float zSpd) {
-        this.getWorld().spawnParticle(EnumParticleTypes.CLOUD, xPos, yPos, zPos, xSpd, ySpd, zSpd);
+    public @NotNull EnumParticleTypes getMufflerParticle() {
+        return EnumParticleTypes.CLOUD;
     }
 }
